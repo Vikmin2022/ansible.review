@@ -1,0 +1,33 @@
+- hosts: web
+  tasks:
+  - name: Install the latest version of Apache
+    yum:
+      name: httpd
+      state: latest
+
+  - name: Make sure a service is running
+    systemd:
+      name: httpd
+      state: started
+      enabled: yes
+
+  - name: Install unzip
+    yum:
+      name: unzip
+      state: latest
+
+  - name: Unarchive a file that needs to be downloaded 
+    unarchive:
+      src: https://www.free-css.com/assets/files/free-css-templates/download/page288/foste.zip
+      dest: /var/www/
+      remote_src: yes
+
+  - name: Recursively change ownership of a directory
+    file:
+      path: /var/www/html
+      state: directory
+      recurse: yes
+      owner: apache
+      group: apache
+
+      
