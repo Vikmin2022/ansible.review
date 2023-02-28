@@ -15,4 +15,14 @@
       - unzip
       state: present   # absent  # latest 
 
+
+  # CMND + ]
+  - name: Add the user 'johnd' with a specific uid and a primary group of 'admin'
+    ansible.builtin.user:
+      name: johnd
+      comment: John Doe
+      uid: 1040
+
+
+
 # ansible-playbook  -i ../setup/inventory   playbook.yaml 
