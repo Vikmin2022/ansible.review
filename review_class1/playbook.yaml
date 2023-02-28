@@ -7,6 +7,7 @@
   become_method: sudo 
   vars:
     state: "present"
+    php_version: "5.4.16"
   tasks:
   - name: Manage packages
     ansible.builtin.package:      # module from the internet 
@@ -28,5 +29,9 @@
       name: lftp
       state: "{{ state }}"
 
+  - name: Manage php
+    ansible.builtin.package:      # module from the internet 
+      name: php-"{{ php_version }}"
+      state: "{{ state }}"
 
 # ansible-playbook -i ../setup/inventory   playbook.yaml 
