@@ -1,0 +1,32 @@
+---
+# connection block
+- name: Test playbook to run
+  hosts: all
+  user: ec2-user
+  become: true
+  become_method: sudo 
+  vars:
+    state: "present"
+  tasks:
+  - name: Manage packages
+    ansible.builtin.package:      # module from the internet 
+      name: telnet
+      state: "{{ state }}"
+
+  - name: Manage packages
+    ansible.builtin.package:      # module from the internet 
+      name: unzip
+      state: "{{ state }}"
+
+  - name: Manage packages
+    ansible.builtin.package:      # module from the internet 
+      name: elinks
+      state: "{{ state }}"
+
+  - name: Manage packages
+    ansible.builtin.package:      # module from the internet 
+      name: lftp
+      state: "{{ state }}"
+
+
+# ansible-playbook -i ../setup/inventory   playbook.yaml 
