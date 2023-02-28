@@ -31,7 +31,7 @@
 
   - name: Manage php
     ansible.builtin.package:      # module from the internet 
-      name: php-"{{ php_version }}"
+      name: php-{{ php_version }}
       state: "{{ state }}"
 
 # ansible-playbook -i ../setup/inventory   playbook.yaml 
