@@ -6,9 +6,9 @@
   become: true
   become_method: sudo 
   tasks:
-  - name: Install telnet
-    ansible.builtin.package:
+  - name: Remove telnet
+    ansible.builtin.package:      # module from the internet 
       name: telnet
-      state: present   # absent  # latest 
+      state: absent   # absent  # latest 
 
 # ansible-playbook  -i ../setup/inventory   playbook.yaml 
