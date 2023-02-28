@@ -17,11 +17,22 @@
 
 
   # CMND + ]
-  - name: Add the user 'johnd' with a specific uid and a primary group of 'admin'
+  - name: Add the user 'johnd' with a specific uid
     ansible.builtin.user:
       name: johnd
       comment: John Doe
       uid: 1040
+
+
+  - name: Ensure groups exist
+    ansible.builtin.group:
+      name: "{{ item }}"
+      state: present
+    with_items:
+    - sales
+    - billing
+    - admins
+    - developers
 
 
 
