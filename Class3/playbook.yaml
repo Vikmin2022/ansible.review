@@ -1,0 +1,14 @@
+---
+# connection block
+- name: Test playbook to run
+  hosts: all
+  user: ec2-user
+  become: true
+  become_method: sudo 
+  tasks:
+  - name: Install telnet
+    ansible.builtin.package:
+      name: telnet
+      state: present   # absent  # latest 
+
+# ansible-playbook  -i ../setup/inventory   playbook.yaml 
