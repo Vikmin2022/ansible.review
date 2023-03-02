@@ -16,7 +16,7 @@
   - name: install multiple package on ubuntu
     when: ansible_facts['distribution'] == "Ubuntu"
     ansible.builtin.apt:      # module from the internet 
-      name: httpd
+      name: apache2
       state: present  
 
 
