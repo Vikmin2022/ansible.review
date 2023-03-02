@@ -19,12 +19,12 @@
 
   - name: Download wordpress
     ansible.builtin.get_url:
-      url: https://wordpress.org/latest.tar.gz
+      url: https://wordpress.org/wordpress-4.0.32.tar.gz
       dest: /tmp/
 
   - name: Extract wordpress.tgz into /tmp
     ansible.builtin.unarchive:
-      src: /tmp/wordpress-6.1.1.tar.gz
+      src: /tmp/wordpress-4.0.32.tar.gz
       dest: /tmp/
       remote_src: true
 
@@ -33,6 +33,11 @@
     ignore_errors: true
 
 
+  - name: Start web server
+    systemd: 
+      name: httpd 
+      state: restarted
+      enabled: true
 
 
 # ansible-playbook -i ../setup/inventory   wordpress.yaml
