@@ -7,6 +7,7 @@
   become_method: sudo 
   tasks:
   - name: Create a file with a content
+    when: ansible_facts['distribution'] == "Ubuntu"
     ansible.builtin.lineinfile:      # module from the internet 
       path: /tmp/testfile
       regexp: '^192.168.1.99 foo.lab.net foo'           # Search for line that startswith '192'
