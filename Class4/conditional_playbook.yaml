@@ -6,8 +6,16 @@
   become: true
   become_method: sudo 
   tasks:
-  - name: install multiple package
+  - name: install multiple package on amazon
+    when: ansible_facts['distribution'] == "Amazon"
     ansible.builtin.yum:      # module from the internet 
+      name: httpd
+      state: present  
+
+
+  - name: install multiple package on ubuntu
+    when: ansible_facts['distribution'] == "Ubuntu"
+    ansible.builtin.apt:      # module from the internet 
       name: httpd
       state: present  
 
@@ -15,3 +23,12 @@
 
 
 # ansible-playbook -i ../setup/inventory   conditional_playbook.yaml 
+
+
+
+
+
+  # - name: Print all available facts
+  #   ansible.builtin.debug:
+  #     var: ansible_facts['python']['version']['major']
+
