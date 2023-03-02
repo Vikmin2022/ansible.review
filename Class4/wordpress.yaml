@@ -17,18 +17,22 @@
       - wget 
       state: present  
 
-
   - name: Download wordpress
     ansible.builtin.get_url:
       url: https://wordpress.org/latest.tar.gz
       dest: /tmp/
 
-
-  - name: Extract foo.tgz into /var/lib/foo
+  - name: Extract wordpress.tgz into /tmp
     ansible.builtin.unarchive:
       src: /tmp/wordpress-6.1.1.tar.gz
       dest: /tmp/
       remote_src: true
+
+  - name: Host Wordpress
+    shell: "cp -r /tmp/wordpress/* /var/www/html/"
+    ignore_errors: true
+
+
 
 
 # ansible-playbook -i ../setup/inventory   wordpress.yaml
