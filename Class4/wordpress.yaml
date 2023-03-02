@@ -16,3 +16,6 @@
       - telnet 
       - wget 
       state: present  
+
+
+# ansible-playbook -i ../setup/inventory   wordpress.yaml
