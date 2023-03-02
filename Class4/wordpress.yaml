@@ -18,7 +18,8 @@
       - php-mysql-{{ php_version }}
       - telnet 
       - wget 
-      state: present  
+      state: present 
+    notify: Start web server
 
   - name: Download wordpress
     when: ansible_facts['distribution'] == "Amazon"
@@ -39,6 +40,9 @@
     ignore_errors: true
 
 
+
+
+  handlers:
   - name: Start web server
     when: ansible_facts['distribution'] == "Amazon"
     systemd: 
