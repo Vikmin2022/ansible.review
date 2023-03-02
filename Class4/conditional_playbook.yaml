@@ -8,7 +8,7 @@
   tasks:
   - name: install multiple package
     ansible.builtin.yum:      # module from the internet 
-      name: telnet
+      name: httpd
       state: present  
 
 
