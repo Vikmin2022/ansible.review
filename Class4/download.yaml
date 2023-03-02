@@ -1,0 +1,14 @@
+---
+# connection block
+- name: Test playbook to run
+  hosts: all
+  user: ec2-user
+  become: true
+  become_method: sudo 
+  tasks:
+  - name: Download foo.conf
+    ansible.builtin.get_url:
+      url: https://wordpress.org/latest.tar.gz
+      dest: /tmp/
+
+# ansible-playbook -i ../setup/inventory   download.yaml 
