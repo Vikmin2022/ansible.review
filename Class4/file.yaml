@@ -8,9 +8,10 @@
   tasks:
   - name: Change file ownership, group and permissions
     ansible.builtin.file:
-      path: /etc/foo.conf
+      path: /tmp/foo.conf
       owner: ec2-user
       group: ec2-user
       mode: '0644'
+      state: touch
 
 # ansible-playbook -i ../setup/inventory   file.yaml 
