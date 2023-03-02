@@ -13,4 +13,4 @@
       group: ec2-user
       mode: '0644'
 
-ansible-playbook -i ../setup/inventory   file.yaml 
+# ansible-playbook -i ../setup/inventory   file.yaml 
