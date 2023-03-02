@@ -8,11 +8,12 @@
   tasks:
   - name: install multiple package on ubuntu
     when: 
-      - ansible_facts['distribution_version'] == "2"
-      - ansible_facts['distribution'] == "Amazon"
+      - ansible_facts['distribution_version'] != "2"
+      - ansible_facts['distribution']         == "Amazon"
     ansible.builtin.package:      # module from the internet 
       name: telnet
       state: latest  
+    ignore_errors: true
 
 
 # ansible-playbook -i ../setup/inventory   reboot.yaml 
